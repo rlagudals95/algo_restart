@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function solution(n) {
+
+            const arr =  Array.from({length: 3}, (_, i) => i + 1)
+            function DFS(L, list) {
+                if (L === n) {
+                    console.log(list)
+                } else {
+                    DFS(L + 1, [...list, arr[L]]);
+                    DFS(L + 1, list)
+                }
+            }
+            DFS(0, []);
+        }
+        console.log(solution(3))
+    </script>
+</body>
+
+</html>

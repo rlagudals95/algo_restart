@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 문제의 갯수와 제한시간이 주어짐
+        // 제한시간 안에 가장 많은 점수를 얻어 야함
+        // 문제의 점수와 걸리는 시간들이 들어옴
+        function solution(n, limit, arr) {
+            let answer = 0;
+            function DFS(L, sum, time) {
+
+                if(time > limit) return;
+                if (L === n) {
+                    if(answer < sum){
+                        answer = sum;
+                    }
+                } else {
+                    DFS(L + 1, sum + arr[L][0], time + arr[L][1]);
+                    DFS(L + 1, sum, time);
+                }
+            }
+
+            DFS(0, 0, 0);
+
+            return answer;
+        }
+
+
+        console.log(solution(5, 20, [[10, 5], [25, 12], [15, 8], [6, 3], [7, 4]]))
+    </script>
+</body>
+
+</html>
